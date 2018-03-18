@@ -1,148 +1,170 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Crystal Game</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <title>Crystal Game</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Acme" rel="stylesheet">
 </head>
+<style type="text/css">
+body {
+    background: url("images/bgoption3.jpg");
+    font-family: 'Acme', sans-serif;
+}
+
+.jumbotron {
+    background: url("images/bgoption2.jpg");
+}
+
+h1,
+#targetNumber {
+    text-align: center;
+}
+
+
+
+}
+</style>
+
 <body>
-<div class="container">
-		<div class="row">
- 		 <div class="col-md-12">
- 		 	<div class="page-header"><h1>Crystals Collector</h1></div>
- 		 </div>
- 		</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Crystals Collector</h1></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="jumbotron">
+                    <p>You will be given a random nmber at the start of the game.
+                        <br> There are four crystals below, by clicking on a crystal you will add a specifit amount of points to yuor total score.
+                        <br> You wil the game by matching your total score to random number, you lose the game if your total sore goes above the random number.
+                        <br>The value of each crystal is hidden from you until you click on it.
+                        <br>Each time when the game starts, the game will change the values of each crystal.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="targetNumber">The Number is: </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-body" id="counter">win:
+                        <br>losses:</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail" id="crystal1"></a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail" id="crystal2"></a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail" id="crystal3"></a>
+                </div>
+                <div class="col-xs-6 col-md-3">
+                    <a href="#" class="thumbnail" id="crystal4"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body" id="score"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
 
- 		<div class="row">
- 		 <div class="col-md-12">
- 		 	<div class="jumbotron">
-  			<p>You will be given a random nmber at the start of the game.<br> There are four crystals below. by clicking on a crystal you will add a specifit amount of points to yuor total score.<br> You wil the game by matching your total score to random number, you lose the game if your total sore goes above the random number.<br>The value of each crystal is hidden from you until you click on it.<br>Each time when the game starts, the game will change the values of each crystal.</p>
- 		 	</div>
- 		 </div>
- 		</div>
-
- 		<div class="row">
- 		 <div class="col-md-8">
-			<div class="panel panel-default">
-			  <div class="panel-body" id="targetNumber">The Number is:</div>
-			</div>
-		 </div>
- 		 <div class="col-md-4">
-			<div class="panel panel-default">
-			  <div class="panel-body" id="counter">win:<br>losses:</div>
-			</div>
-		 </div>
-
-		<div class="row">
-		  <div class="col-xs-6 col-md-3">
-		    <a href="#" class="thumbnail" id="crystal1"></a>
-		  </div>
-		  <div class="col-xs-6 col-md-3">
-		    <a href="#" class="thumbnail" id="crystal2"></a>
-		  </div>
-		  <div class="col-xs-6 col-md-3">
-		    <a href="#" class="thumbnail" id="crystal3"></a>
-		  </div>
-		  <div class="col-xs-6 col-md-3">
-		    <a href="#" class="thumbnail" id="crystal4"></a>
-		  </div>
-		</div>
-
- 		<div class="row">
- 		 <div class="col-md-12">
-			<div class="panel panel-default">
-			  <div class="panel-body" id="score"></div>
-			</div>
-		 </div>
-		</div>
-</div>
-
-  <script type="text/javascript">
-
-  	 $(document).ready(function() {
-          
 
             function initializeGame() {
-   			 counter = 0;
-   			 var targetNumber ="";
-  			 var numberOptions ="";
-  			 $("#score").empty();
-  			  $("#score").html("Your total score is: " + counter);
-  			  $("#targetNumber").empty();
-  			   var targetNumber = Math.floor(Math.random() * 101) + 19;
- 			$("#targetNumber").append("The Number is: " + targetNumber);
-      		}
+                counter = 0;
+                var targetNumber = "";
+                var numberOptions = "";
+                $("#score").empty();
+                $("#score").html("Your total score is: " + counter);
+                $("#targetNumber").empty();
+                var targetNumber = Math.floor(Math.random() * 101) + 19;
+                $("#targetNumber").append("The Number is: " + targetNumber);
+            }
 
 
-  var targetNumber = Math.floor(Math.random() * 101) + 19;
-  $("#targetNumber").append(targetNumber);
+            var targetNumber = Math.floor(Math.random() * 101) + 19;
+            $("#targetNumber").append(targetNumber);
 
-    var counter = 0;
-    var winCount = 0;
-    var lossesCount = 0;
+            var counter = 0;
+            var winCount = 0;
+            var lossesCount = 0;
 
-  var numberOptions ="";
-function renderValue() {
-  	numberOptions = Math.floor(Math.random() * 11) + 1;
-  }
+            var numberOptions = "";
 
-  		
-
-    var imageCrystal1 = $("<img>");
-    imageCrystal1.addClass("crystal-image");
-    imageCrystal1.attr("src", "http://cdn.playbuzz.com/cdn/7a5d7935-6177-4be8-8b72-2a95ad2bcdfe/3b295cc9-7b5e-412f-8b1f-8547edd8e66b.jpg");
-    renderValue();
-    imageCrystal1.attr("data-crystalvalue", numberOptions);
-    $("#crystal1").append(imageCrystal1);
-
-    var imageCrystal2 = $("<img>");
-    imageCrystal2.addClass("crystal-image");
-    imageCrystal2.attr("src", "https://www.ldhharmony.com/uploads/1/7/8/7/17873319/s744960470919649359_p17_i1_w480.jpeg");
-    renderValue();
-    imageCrystal2.attr("data-crystalvalue", numberOptions);
-    $("#crystal2").append(imageCrystal2);
-
-    var imageCrystal3 = $("<img>");
-    imageCrystal3.addClass("crystal-image");
-    imageCrystal3.attr("src", "http://mediacdn.shopatron.com/media/mfg/174/product_image/thm/t700_76cd34ed29fd11cf749b40e79d36d59d.jpg?1400799839");
-    renderValue();
-    imageCrystal3.attr("data-crystalvalue", numberOptions);
-    $("#crystal3").append(imageCrystal3);  
-
-    var imageCrystal4 = $("<img>");
-    imageCrystal4.addClass("crystal-image");
-    imageCrystal4.attr("src", "https://scstylecaster.files.wordpress.com/2016/05/crystal-healing-lepidolite_02.jpg?w=712&h=712");
-    renderValue();
-    imageCrystal4.attr("data-crystalvalue", numberOptions);
-    $("#crystal4").append(imageCrystal4);
+            function renderValue() {
+                numberOptions = Math.floor(Math.random() * 11) + 1;
+            }
 
 
-      $(".crystal-image").on("click", function(clicker) {
 
-    var crystalValue = ($(this).attr("data-crystalvalue"));
-    crystalValue = parseInt(crystalValue);
+            var imageCrystal1 = $("<img>");
+            imageCrystal1.addClass("crystal-image");
+            imageCrystal1.attr("src", "http://cdn.playbuzz.com/cdn/7a5d7935-6177-4be8-8b72-2a95ad2bcdfe/3b295cc9-7b5e-412f-8b1f-8547edd8e66b.jpg");
+            renderValue();
+            imageCrystal1.attr("data-crystalvalue", numberOptions);
+            $("#crystal1").append(imageCrystal1);
 
-    counter += crystalValue;
-    $("#score").html("Your total score is: " + counter);
-    
-	if (counter === targetNumber) {
-      alert("You win!");
-      winCount++
-      initializeGame();
-  
-    }
+            var imageCrystal2 = $("<img>");
+            imageCrystal2.addClass("crystal-image");
+            imageCrystal2.attr("src", "https://www.ldhharmony.com/uploads/1/7/8/7/17873319/s744960470919649359_p17_i1_w480.jpeg");
+            renderValue();
+            imageCrystal2.attr("data-crystalvalue", numberOptions);
+            $("#crystal2").append(imageCrystal2);
 
-    else if (counter >= targetNumber) {
-      alert("You lose!!");
-      lossesCount++   
-      initializeGame();
-	}
- $("#counter").html("Wins: " + winCount + " and losses: " + lossesCount);
+            var imageCrystal3 = $("<img>");
+            imageCrystal3.addClass("crystal-image");
+            imageCrystal3.attr("src", "http://mediacdn.shopatron.com/media/mfg/174/product_image/thm/t700_76cd34ed29fd11cf749b40e79d36d59d.jpg?1400799839");
+            renderValue();
+            imageCrystal3.attr("data-crystalvalue", numberOptions);
+            $("#crystal3").append(imageCrystal3);
 
-    }); 
-       
- 
-});
- </script>
+            var imageCrystal4 = $("<img>");
+            imageCrystal4.addClass("crystal-image");
+            imageCrystal4.attr("src", "https://scstylecaster.files.wordpress.com/2016/05/crystal-healing-lepidolite_02.jpg?w=712&h=712");
+            renderValue();
+            imageCrystal4.attr("data-crystalvalue", numberOptions);
+            $("#crystal4").append(imageCrystal4);
+
+
+            $(".crystal-image").on("click", function(clicker) {
+
+                var crystalValue = ($(this).attr("data-crystalvalue"));
+                crystalValue = parseInt(crystalValue);
+
+                counter += crystalValue;
+                $("#score").html("Your total score is: " + counter);
+
+                if (counter === targetNumber) {
+                    alert("You win!");
+                    winCount++
+                    initializeGame();
+
+                } else if (counter >= targetNumber) {
+                    alert("You lose!!");
+                    lossesCount++
+                    initializeGame();
+                }
+                $("#counter").html("Wins: " + winCount + " and losses: " + lossesCount);
+
+            });
+
+
+        });
+        </script>
 </body>
+
 </html>
